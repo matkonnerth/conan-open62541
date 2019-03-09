@@ -5,7 +5,7 @@ env:
      - CONAN_USERNAME: "matkonnerth"
      - CONAN_LOGIN_USERNAME: "matkonnerth"
      - CONAN_CHANNEL: "git-master"
-     - CONAN_UPLOAD: "UPLOAD_URL"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/matkonnerth/cpprepo"
 
 linux: &linux
    os: linux
