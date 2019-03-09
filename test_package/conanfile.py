@@ -8,11 +8,12 @@ class Open62541TestConan(ConanFile):
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
-        # in "test_package"
-        cmake.configure()
-        cmake.build()
+        if not tools.cross_building(self.settings):
+            cmake = CMake(self)
+            # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
+            # in "test_package"
+            cmake.configure()
+            cmake.build()
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
