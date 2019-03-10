@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class Open62541Conan(ConanFile):
     name = "open62541"
-    version = "0.4"
+    version = "0.3.0"
     license = "Mozilla Public License v2.0"
     author = "matkonnerth@gmail.com"
     url = "https://github.com/matkonnerth/conan-open62541"
@@ -16,18 +16,13 @@ class Open62541Conan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        self.run("git clone https://github.com/open62541/open62541.git")
-        self.run("cd open62541 && git checkout master")
+        self.run("git clone https://github.com/open62541/open62541.git --branch=v0.3.0")
         self.run("cd open62541 && git submodule init")
         self.run("cd open62541 && git submodule update")
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        #true
-        cmake.definitions['UA_ENABLE_PUBSUB'] = True
-        cmake.definitions['UA_ENABLE_PUBSUB_INFORMATIONMODEL'] = True
-        cmake.definitions['UA_ENABLE_PUBSUB_INFORMATIONMODEL_METHODS'] = True
-        cmake.definitions['UA_NAMESPACE_ZERO'] = "MINIMAL"
+        cmake.definitions['UA_NAMESPACE_ZERO'] = "FULL"
 
         return cmake
 
