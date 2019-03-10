@@ -27,7 +27,7 @@ class Open62541Conan(ConanFile):
         cmake.definitions['UA_ENABLE_PUBSUB'] = True
         cmake.definitions['UA_ENABLE_PUBSUB_INFORMATIONMODEL'] = True
         cmake.definitions['UA_ENABLE_PUBSUB_INFORMATIONMODEL_METHODS'] = True
-        cmake.definitions['UA_NAMESPACE_ZERO'] = "MINIMAL"
+        cmake.definitions['UA_NAMESPACE_ZERO'] = "FULL"
 
         return cmake
 
