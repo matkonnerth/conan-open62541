@@ -4,8 +4,10 @@ env:
      - CONAN_REFERENCE: "open62541/0.4"
      - CONAN_USERNAME: "matkonnerth"
      - CONAN_LOGIN_USERNAME: "matkonnerth"
-     - CONAN_CHANNEL: "git-master"
+     - CONAN_CHANNEL: "testing"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/matkonnerth/cpprepo"
+     - CONAN_REMOTES: "https://api.bintray.com/conan/matkonnerth/cpprepo"
+     - CONAN_SKIP_CHECK_CREDENTIALS: 1
 
 linux: &linux
    os: linux
