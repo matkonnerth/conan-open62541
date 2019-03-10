@@ -23,7 +23,7 @@ class Open62541Conan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions['UA_ENABLE_AMALGAMATION'] = False
-        cmake.definitions['UA_ENABLE_FULL_NS0'] = False
+        cmake.definitions['UA_ENABLE_FULL_NS0'] = True
 
 
         return cmake
