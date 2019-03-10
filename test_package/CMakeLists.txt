@@ -4,6 +4,8 @@ project(PackageTest CXX)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
+add_definitions(-DUA_NO_AMALGAMATION)
+
 add_executable(example example.cpp)
 target_link_libraries(example ${CONAN_LIBS})
 

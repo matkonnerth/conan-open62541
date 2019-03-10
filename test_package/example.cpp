@@ -4,6 +4,7 @@
 
 #include <signal.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 static void
 addVariable(UA_Server *server)

@@ -22,7 +22,9 @@ class Open62541Conan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.definitions['UA_NAMESPACE_ZERO'] = "FULL"
+        cmake.definitions['UA_ENABLE_AMALGAMATION'] = False
+        cmake.definitions['UA_ENABLE_FULL_NS0'] = False
+
 
         return cmake
 
