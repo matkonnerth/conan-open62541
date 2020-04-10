@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "open62541/0.4"
+     - CONAN_REFERENCE: "open62541/1.0"
      - CONAN_USERNAME: "matkonnerth"
      - CONAN_LOGIN_USERNAME: "matkonnerth"
      - CONAN_CHANNEL: "testing"
