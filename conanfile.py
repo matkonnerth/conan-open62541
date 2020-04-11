@@ -11,8 +11,6 @@ class Open62541Conan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
-    asan_flags = "-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"
-
     def configure(self):
         del self.settings.compiler.libcxx
 
@@ -42,6 +40,7 @@ class Open62541Conan(ConanFile):
         cmake.patch_config_paths()
 
     def package_info(self):
+        asan_flags = "-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"
         self.cpp_info.libs = ["open62541"]
         if self.settings.build_type == "Debug" and self.settings.compiler == "clang":
             self.cpp_info.cflags = [asan_flags]
