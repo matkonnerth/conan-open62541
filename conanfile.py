@@ -37,5 +37,4 @@ class Open62541Conan(ConanFile):
         cmake.patch_config_paths()
 
     def package_info(self):
-        self.cpp_info.libs = ["open62541"]
-
+        self.cpp_info.libs = ["asan", "open62541"]
