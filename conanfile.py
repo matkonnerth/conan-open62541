@@ -7,7 +7,7 @@ class Open62541Conan(ConanFile):
     url = "https://github.com/open62541/open62541"
     homepage = "https://open62541.org/"
     description = "open source C99 implementation of OPC UA"
-    topics = ("conan", "opcua", "open62541")
+    topics = ("opcua", "open62541")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
@@ -38,5 +38,6 @@ class Open62541Conan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["open62541"]
-        self.cpp_info.cflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # pure C flags
-        self.cpp_info.cxxflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # C++ compilation flags
+        if self.settings.build_type == "Debug" and self.settings.compiler == "clang":
+            self.cpp_info.cflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # pure C flags
+            self.cpp_info.cxxflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # C++ compilation flags
