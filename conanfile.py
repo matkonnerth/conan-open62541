@@ -38,5 +38,5 @@ class Open62541Conan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["open62541"]
-        self.cpp_info.cflags = ["-fsanitize=address"]  # pure C flags
-        self.cpp_info.cxxflags = ["-fsanitize=address"]  # C++ compilation flags
+        self.cpp_info.cflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # pure C flags
+        self.cpp_info.cxxflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # C++ compilation flags

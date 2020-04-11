@@ -4,8 +4,8 @@
 int main()
 {
   UA_Server *server = UA_Server_new();
-  UA_ServerConfig_setDefault(UA_Server_getConfig(server));
-  UA_Server_run_startup(server);
-  UA_Server_run_shutdown(server);
+  //UA_ServerConfig_setDefault(UA_Server_getConfig(server));
+  //UA_Server_run_startup(server);
+  //UA_Server_run_shutdown(server);
   UA_Server_delete(server);
 }
