@@ -1,4 +1,4 @@
-# conan-open62541
+# conan-open62541 [![Build Status](https://travis-ci.org/matkonnerth/conan-open62541.svg?branch=master)](https://travis-ci.org/matkonnerth/conan-open62541)
 
 ## Conan
 
