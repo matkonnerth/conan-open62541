@@ -18,8 +18,7 @@ class Open62541Conan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
-        cmake.definitions["CMAKE_BUILD_TYPE"] = "Debug"
-        cmake.definitions["UA_NAMESPACE_ZERO"] = "MINIMAL"
+        cmake.definitions["UA_NAMESPACE_ZERO"] = "FULL"
         cmake.definitions["UA_ENABLE_SUBSCRIPTIONS_EVENTS"] = "ON"
         cmake.configure(source_folder="open62541-" +self.version)
         return cmake
