@@ -11,6 +11,8 @@ class Open62541Conan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
+    asan_flags = "-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"
+
     def configure(self):
         del self.settings.compiler.libcxx
 
@@ -24,7 +26,7 @@ class Open62541Conan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["BUILD_SHARED_LIBS"] = "ON"
-        cmake.definitions["UA_NAMESPACE_ZERO"] = "REDUCED"
+        cmake.definitions["UA_NAMESPACE_ZERO"] = "FULL"
         cmake.definitions["UA_ENABLE_SUBSCRIPTIONS_EVENTS"] = "ON"
         cmake.configure(source_folder="open62541")
         return cmake
@@ -42,5 +44,5 @@ class Open62541Conan(ConanFile):
     def package_info(self):
         self.cpp_info.libs = ["open62541"]
         if self.settings.build_type == "Debug" and self.settings.compiler == "clang":
-            self.cpp_info.cflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # pure C flags
-            self.cpp_info.cxxflags = ["-g -fno-omit-frame-pointer -gline-tables-only -fsanitize=address -fsanitize-address-use-after-scope -fsanitize-coverage=trace-pc-guard,trace-cmp -fsanitize=leak -fsanitize=undefined"]  # C++ compilation flags
+            self.cpp_info.cflags = [asan_flags]
+            self.cpp_info.cxxflags = [asan_flags]
