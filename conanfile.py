@@ -9,8 +9,6 @@ class Open62541Conan(ConanFile):
     description = "open source C99 implementation of OPC UA"
     topics = ("conan", "opcua", "open62541")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=True"
     generators = "cmake"
 
     def source(self):
@@ -22,6 +20,7 @@ class Open62541Conan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
+        cmake.definitions["BUILD_SHARED_LIBS"] = "ON"
         cmake.definitions["UA_NAMESPACE_ZERO"] = "MINIMAL"
         cmake.definitions["UA_ENABLE_SUBSCRIPTIONS_EVENTS"] = "ON"
         cmake.configure(source_folder="open62541")
