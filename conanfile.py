@@ -14,13 +14,17 @@ class Open62541Conan(ConanFile):
     generators = "cmake"
 
     def source(self):
-        tools.get(**self.conan_data["sources"][self.version])
+        self.run("git clone https://github.com/open62541/open62541.git")
+        self.run("cd open62541 && git checkout tags/v"+self.version)
+        self.run("cd open62541 && git submodule init")
+        self.run("cd open62541 && git submodule update")
+
 
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["UA_NAMESPACE_ZERO"] = "FULL"
         cmake.definitions["UA_ENABLE_SUBSCRIPTIONS_EVENTS"] = "ON"
-        cmake.configure(source_folder="open62541-" +self.version)
+        cmake.configure(source_folder="open62541")
         return cmake
 
     def build(self):
