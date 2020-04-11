@@ -11,6 +11,9 @@ class Open62541Conan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
+    def configure(self):
+        del self.settings.compiler.libcxx
+
     def source(self):
         self.run("git clone https://github.com/open62541/open62541.git")
         self.run("cd open62541 && git checkout tags/v"+self.version)

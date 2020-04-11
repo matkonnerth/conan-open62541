@@ -8,6 +8,3 @@ if __name__ == "__main__":
     builder.add(settings={"arch": "x86_64", "build_type": "Release"},
                 options={}, env_vars={}, build_requires={})   
     builder.run()
-
-def configure(self):
-    del self.settings.compiler.libcxx
