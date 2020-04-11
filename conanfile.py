@@ -14,14 +14,14 @@ class Open62541Conan(ConanFile):
     def source(self):
         self.run("git clone https://github.com/open62541/open62541.git")
         self.run("cd open62541 && git checkout tags/v"+self.version)
-        #self.run("cd open62541 && git submodule init")
-        #self.run("cd open62541 && git submodule update")
+        self.run("cd open62541 && git submodule init")
+        self.run("cd open62541 && git submodule update")
 
 
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["BUILD_SHARED_LIBS"] = "ON"
-        cmake.definitions["UA_NAMESPACE_ZERO"] = "MINIMAL"
+        cmake.definitions["UA_NAMESPACE_ZERO"] = "REDUCED"
         cmake.definitions["UA_ENABLE_SUBSCRIPTIONS_EVENTS"] = "ON"
         cmake.configure(source_folder="open62541")
         return cmake
@@ -37,4 +37,6 @@ class Open62541Conan(ConanFile):
         cmake.patch_config_paths()
 
     def package_info(self):
-        self.cpp_info.libs = ["asan", "ubsan", "gcov", "open62541"]
+        self.cpp_info.libs = ["open62541"]
+        self.cpp_info.cflags = ["-fsanitize=address"]  # pure C flags
+        self.cpp_info.cxxflags = ["-fsanitize=address"]  # C++ compilation flags
