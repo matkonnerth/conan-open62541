@@ -1,4 +1,4 @@
-# conan-open62541
+# conan-open62541 [![Build Status](https://travis-ci.org/matkonnerth/conan-open62541.svg?branch=master)](https://travis-ci.org/matkonnerth/conan-open62541)
 
 ## Conan
 
@@ -12,6 +12,9 @@ Build for Linux is provided via Travis CI.
 
 The binary packages are hosted at 
 https://bintray.com/matkonnerth/cpprepo
+
+Packages can retrieved via the lightweight conan client, therefore the repository has to be added:
+conan remote add openRepo https://api.bintray.com/conan/matkonnerth/cpprepo
 
 An example for using the open62541 conan package can be found here:
 https://github.com/matkonnerth/conan-open62541-example
