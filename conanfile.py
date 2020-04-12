@@ -43,6 +43,9 @@ class Open62541Conan(ConanFile):
         self.cpp_info.libs = ["open62541"]
         if self.settings.build_type == "Debug" and self.settings.compiler == "clang":
             self.cpp_info.cflags = ["-fsanitize=address"]
+            self.cpp_info.cflags = ["-fsanitize-address-use-after-scope"]
             self.cpp_info.cflfags = ["-fsanitize-coverage=trace-pc-guard,trace-cmp"]
+            self.cpp_info.cflfags = ["-fsanitize=leak"]
+            self.cpp_info.cflfags = ["-fsanitize-undefined"]
             self.cpp_info.cxxflags = self.cpp_info.cflags 
             #self.cpp_info.sharedlinkflags = ["-fsanitize=address"]
