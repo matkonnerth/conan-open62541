@@ -2,7 +2,7 @@ from conans import ConanFile, CMake, tools
 
 class Open62541Conan(ConanFile):
     name = "open62541"
-    version = "1.0.1"
+    version = "master"
     license = "Mozilla Public License v2.0"
     url = "https://github.com/open62541/open62541"
     homepage = "https://open62541.org/"
@@ -16,7 +16,8 @@ class Open62541Conan(ConanFile):
 
     def source(self):
         self.run("git clone https://github.com/open62541/open62541.git")
-        self.run("cd open62541 && git checkout tags/v"+self.version)
+        #self.run("cd open62541 && git checkout tags/v"+self.version)
+        self.run("cd open62541 && git checkout master")
         self.run("cd open62541 && git submodule init")
         self.run("cd open62541 && git submodule update")
 
