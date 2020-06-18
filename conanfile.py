@@ -36,7 +36,7 @@ class Open62541Conan(ConanFile):
 
     def package(self):
         cmake = self._configure_cmake()
-        cmake.definitions["CMAKE_INSTALL_PREFIX"] = "./"
+        #cmake.definitions["CMAKE_INSTALL_PREFIX"] = "./"
         cmake.install()
         cmake.patch_config_paths()
 
